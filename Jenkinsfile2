@@ -28,7 +28,7 @@ pipeline {
     
     stage('Docker Image Creation') {
       steps {
-        sh 'docker build -t arpithabp/insure-project:latest .'
+        sh 'docker build -t arpithabp/insure-project:latest'
             }
     }
     stage('DockerLogin') {
