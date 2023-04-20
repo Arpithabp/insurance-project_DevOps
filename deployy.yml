@@ -4,9 +4,9 @@
   become: true
   tasks:
   - name: apt updating
-    command: sudo apt update
+    command: sudo apt-get update
   - name: Install python and Pip
-    command: sudo apt install -y python-pip
+    command: sudo apt-get install -y python-pip
   - name: Installing Docker
     command: sudo apt-get install -y docker.io
     become: yes
