@@ -39,7 +39,8 @@ pipeline {
  {
         sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
 }
-            }
+}            
+}
 stage('Push Image to DockerHub') {
       steps {
         sh 'docker push arpithabp/insure-project:latest'
