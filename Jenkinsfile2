@@ -44,5 +44,11 @@ pipeline {
         sh 'docker push arpithabp/insure-project:latest'
             }
     }
+      stage('Deploy Application using Ansible') {
+      steps {
+        ansiblePlaybook credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'deployy.yml'
+            }
+}
+}
 }
 }
