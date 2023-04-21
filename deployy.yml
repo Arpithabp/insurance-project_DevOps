@@ -6,12 +6,6 @@
   - name: updating apt
     command : sudo apt update
  
-  - name: Install Git
-    apt: name=git update_cache=yes state=latest
-      
-  - name: Install Maven
-    apt: name=maven update_cache=yes state=latest
-      
   - name: Install Tomcat9
     apt: name=tomcat9 update_cache=yes state=latest
 
