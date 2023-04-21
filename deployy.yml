@@ -6,9 +6,6 @@
   - name: updating apt
     command : sudo apt update
  
-  - name: Install Tomcat9
-    apt: name=tomcat9 update_cache=yes state=latest
-
   - name: Install python and Pip
     command: sudo apt install -y python3-pip
 
