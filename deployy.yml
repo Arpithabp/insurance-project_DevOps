@@ -29,5 +29,5 @@
     become_user : root
 
   - name: Deploy Docker Container
-    command: docker run -itd -p 8090:8085 arpithabp/insure-project:latest
+    command: docker run -itd -p 8080:8081 arpithabp/insure-project:latest
 
