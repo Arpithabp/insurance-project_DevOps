@@ -2,12 +2,11 @@
 - name : Configure Docker on EC2 Instances
   hosts : [server]
   become: true
-  connection : ssh
   tasks : 
   - name: updating apt
-    command : sudo apt-get update
+    command : sudo apt update
 
-  - name: Install python and pip
+  - name: Install python and Pip
     command: sudo apt install -y python-pip
 
   - name : Install Docker
