@@ -1,22 +1,21 @@
 ---
-- name: Configure Docker on Deployserver
-  hosts: [server]
+- name : Configure Docker on EC2 Instances
+  hosts : all
   become: true
-  tasks:
-  - name: apt updating
-    command: sudo apt-get update
-  - name: Install python and Pip
-    command: sudo apt install -y python-pip
-  - name: Installing Docker
-    command: sudo apt-get install -y docker.io
-    become_user: root
-  - name: start docker service using systemctl
-    systemd:
-      name: docker
-      state: started
-      enabled: yes
-      daemon_reload: yes
-    become_user: root
-  - name: Deploy the Image from DockerHub and Run as Container
-    command: docker run -itd -p 8080:8081 arpithabp/insure-project:latest
+  connection : ssh
+  tasks : 
+  - name: updating apt
+    command : sudo apt-get update
 
+  - name : Install Docker
+    command : sudo apt-get install -y docker.io
+    become : yes
+    become_user : root
+
+  - name : Start Docker Service
+    command : sudo systemctl start docker
+    become : yes
+    become_user : root
+
+  - name: Deploy Docker Container
+    command: docker run -itd -p 8084:8081 arpithabp/insure-project:latest
