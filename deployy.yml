@@ -2,9 +2,18 @@
 - name : Configure Docker on EC2 Instances
   hosts : [server]
   become: true
-  tasks : 
+  tasks :
   - name: updating apt
     command : sudo apt update
+ 
+  - name: Install Git
+    apt: name=git update_cache=yes state=latest
+      
+  - name: Install Maven
+    apt: name=maven update_cache=yes state=latest
+      
+  - name: Install Tomcat9
+    apt: name=tomcat9 update_cache=yes state=latest
 
   - name: Install python and Pip
     command: sudo apt install -y python3-pip
@@ -21,3 +30,4 @@
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8090:8085 arpithabp/insure-project:latest
+
